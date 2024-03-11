@@ -11,6 +11,7 @@ We are given three files: a python script, a password, and a flag. The task asks
 5. So I tried again (python ende.py -e file.txt.en), entered the password from the txt.file (I ended up just manually opening it and copy/pasting the password), and got a bunch of gibberish that was not formatted in the expected way (picoCTF{FLAG}).
 6. So I did the same process again but using "python ende.py -d file.txt.en" and got the answer (picoCTF{4p0110_1n_7h3_h0us3_192ee2db}).    
 
+
 ### Wave a flag | 10 points
 
 We are given a program that will output the flag for us. We are to make it executable, execute it, and use the help commands to figure out what the program has to offer. 
@@ -20,6 +21,7 @@ We are given a program that will output the flag for us. We are to make it execu
 3. Created a waveaflag directory and used wget to place the given program into it.
 4. Followed the clue saying I should run "chmod +x warm" before using "./warm".
 5. Received a message to use -h after running "./warm". Ran "./warm -h" and received message with the answer (picoCTF{b1scu1ts_4nd_gr4vy_616f7182}).
+
 
 ### Nice netcat... | 15 points
 
