@@ -1,7 +1,8 @@
 # picoCTF_gym
 ## by Liza Kim
 ### General Skills
-1. Python Wrangling | 10 points
+Python Wrangling | 10 points
+   
    We are given three files: a python script, a password, and a flag. The task asks us to run the script and use the given password to get the flag within the flag file.
 
    I first used the given YouTube video to create a directory for this challenge. I then used wget to place the three given files into my pythonwrangling directory.
