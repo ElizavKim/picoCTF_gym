@@ -1,7 +1,6 @@
-# picoCTF_gym
-# by Liza Kim
+# picoCTF_gym by Liza Kim
 ## General Skills
-###Python Wrangling | 10 points
+### Python Wrangling | 10 points
    
 We are given three files: a python script, a password, and a flag. The task asks us to run the script and use the given password to get the flag within the flag file.
 
@@ -14,3 +13,18 @@ We are given three files: a python script, a password, and a flag. The task asks
 
 ### Wave a flag | 10 points
 
+We are given a program that will output the flag for us. We are to make it executable, execute it, and use the help commands to figure out what the program has to offer. 
+
+1. Downloaded the given program named "warm". Checked it out, all gibberish. Looked through the five hints from picoCTF.
+2. One of the clues was to use the command "chmod +x warm". I looked up what chmod +x is supposed to do and found my answer here: https://shorturl.at/ilyPT
+3. Created a waveaflag directory and used wget to place the given program into it.
+4. Followed the clue saying I should run "chmod +x warm" before using "./warm".
+5. Received a message to use -h after running "./warm". Ran "./warm -h" and received message with the answer (picoCTF{b1scu1ts_4nd_gr4vy_616f7182}).
+
+### Nice netcat... | 15 points
+
+We are given a netcat command to run in the terminal and decipher it's non-English language in order to find the flag. 
+
+1. Didn't create a directory since there aren't any files involved. Checked out the hints and realized there would be ASCII translation.
+2. Ran the given command (nc mercury.picoctf.net 7449) and received a list of numbers, which I assumed was ASCII.
+3. Pulled up an ASCII to text translator. The first one I pulled up did a bad job translating the numbers, but the second one produced a legible message, which was the answer (picoCTF{g00d_k1tty!_n1c3_k1tty!_f2d7cafa}).
