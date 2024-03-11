@@ -1,5 +1,4 @@
-# picoCTF_gym
-## by Liza Kim
+# picoCTF_gym ## by Liza Kim
 ### General Skills
 Python Wrangling | 10 points
    
