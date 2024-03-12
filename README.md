@@ -55,5 +55,19 @@ We're supposed to use the tab button to make our navigation of a deep and length
 4. Used "cat [tab]" to get the open the file. Got a bunch of gibberish, but amongst the gibberish was the answer (picoCTF{l3v3l_up!_t4k3_4_r35t!_6f332f10}).
 
 
-### Magikarp Ground Mission
-1. 
+### Magikarp Ground Mission | 30 points
+
+We're supposed to run an instance of the shell, sign into it using given credentials, and look through the directories/files to find the picoCTF flag.
+
+1. Launched the instance and then opened my Webshell. Immediately entered the command to enter the shell ("ssh ctf-player@venus.picoctf.net -p 56974") and was stumped by the password not working. Tried again multiple times until I realized I first need to sign in with my pico credentials before entering the shell command.
+2. Once in the system, used "unminimize" to see the hidden files/directories.
+3. Used "ls" to see the files. There were two: '1of3.flag.txt' and 'instructions-to-2of3.txt'. Used "cat" with the first file name to see contents, found the first portion of the flag.
+4. Used "cat" with second file name, which contained message to navigate to root /
+5. Used "ls /" to see what was in root. Found two files of interest: '2of3.flag.txt' and 'instructions-to-3of3.txt'. For some reason I thought I already saw the first file, so I just focused on checking what's in the second file.
+6. Tried to "cat instructions-to-3of3.txt" but it wasn't working. Realized I needed to cd into '/' first.
+7. Then I used the cat command and I received the second half of the pico flag (it's actually the third portion b/c I skipped over the file with the second portion).
+8. Got an error after submitting my answer. Looked through my log and realized I actually have not looked in the '2of3.flag.txt' file and so I used cat to look into it.
+9. Found the second portion of the flag there. Put pieces together and successfully submitted answer (picoCTF{xxsh_0ut_0f_\/\/4t3r_3ca613a1}).
+
+
+### 
