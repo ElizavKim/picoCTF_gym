@@ -33,6 +33,27 @@ We are given a netcat command to run in the terminal and decipher it's non-Engli
 
 
 ### Static ain't always noise | 20 points
-1. No hints sadness. Looked through the bash script to understand what it's supposed to do. It seems to take the first file given to it, pick out the text, and print the text into a new text file.
-2. Created a new directory called staticaintalwaysnoise and placed the binary fie and the bash file into it.
-3. Usually used cat to see contents of file, so I probably need to pass the binary file named 'static' to ltdis.sh. 
+
+We're supposed to look into a binary file called 'static' with the help of a BASH script in order to find the flag. 
+
+1. No hints sadness. Looked through the bash script to understand what it's supposed to do, found hints there. Looked through Linux notes to understand the first two lines. It seems the script takes the first file given to it, picks out the text, and prints the text into a new text file.
+2. Created a new directory called staticaintalwaysnoise and placed the binary file and the bash file into it.
+3. Ran static to see what's inside of it using "./static". Didn't work, remembered I need to use "chmod +x static" first. After doing so, I got a messsage saying the flag was somewhere in the static file.
+4. Ran shell file with static as argument using "source ltdis.sh static". Found ways to run shell file from here: https://shorturl.at/HIN67
+5. Received message that static was disassembled and assembled into a new file, and it also created a file with only strings from static.
+6. Decided to use "cat" to look into the second file, since the flag would likely be a string.
+7. Scrolled through the items and found the answer (picoCTF{d15a5m_t34s3r_f5aeda17}) at position 1020.
+
+
+### Tab, Tab, Attack | 20 points
+
+We're supposed to use the tab button to make our navigation of a deep and lengthy-named directory easier. In the end, there's a content file, but we need to get to it first. 
+
+1. Downloaded zip folder, looked through it, ridiculous. Read hint about using tab to autocomplte. Created tabtabattack directory to place the folder into.
+2. Unzipped folder by using "unzip [tab]" to autocomplete the name of the folder. Searched for "how to unzip a file in linux terminal" and just tried the first command I found.
+3. Used "cd [tab]/[tab]/[tab]/[tab]/[tab]/[tab]/[tab]" to enter the directory with the content file
+4. Used "cat [tab]" to get the open the file. Got a bunch of gibberish, but amongst the gibberish was the answer (picoCTF{l3v3l_up!_t4k3_4_r35t!_6f332f10}).
+
+
+### Magikarp Ground Mission
+1. 
