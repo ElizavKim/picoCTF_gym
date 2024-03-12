@@ -30,3 +30,9 @@ We are given a netcat command to run in the terminal and decipher it's non-Engli
 1. Didn't create a directory since there aren't any files involved. Checked out the hints and realized there would be ASCII translation.
 2. Ran the given command (nc mercury.picoctf.net 7449) and received a list of numbers, which I assumed was ASCII.
 3. Pulled up an ASCII to text translator. The first one I pulled up did a bad job translating the numbers, but the second one produced a legible message, which was the answer (picoCTF{g00d_k1tty!_n1c3_k1tty!_f2d7cafa}).
+
+
+### Static ain't always noise | 20 points
+1. No hints sadness. Looked through the bash script to understand what it's supposed to do. It seems to take the first file given to it, pick out the text, and print the text into a new text file.
+2. Created a new directory called staticaintalwaysnoise and placed the binary fie and the bash file into it.
+3. Usually used cat to see contents of file, so I probably need to pass the binary file named 'static' to ltdis.sh. 
