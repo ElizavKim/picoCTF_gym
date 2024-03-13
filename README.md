@@ -70,4 +70,136 @@ We're supposed to run an instance of the shell, sign into it using given credent
 9. Found the second portion of the flag there. Put pieces together and successfully submitted answer (picoCTF{xxsh_0ut_0f_\/\/4t3r_3ca613a1}).
 
 
-### 
+### Lets Warm Up | 50 points
+
+Given a hexadecimal, convert it into ASCII. 
+
+1. The question asked what 0x70 would be in ASCII. I pulled up a hexadecimal to ASCII converter, but it took like three different converters before I found one that gave me an actual character.
+2. I had to format the answer as a flag, so my answer was picoCTF{p}. This was the converter I used: https://shorturl.at/mwQU3
+
+
+### Warmed Up | 50 points
+
+Given hex (0x3D), what would the it be in decimal?
+
+1. Used converter and submitted picoCTF{61}. Converter: https://www.atatus.com/tools/hex-to-decimal
+
+
+### 2Warm | 50 points
+
+Convert given decimal (42) into binary/
+
+1. Used converter and submitted picoCTF{101010}. Converter: https://www.rapidtables.com/convert/number/decimal-to-binary.html
+
+
+### Based | 200 points
+
+Convert set of different data encodings into text under 45 seconds to receive the flag. 
+
+1. Log into Webshell and run the given command (nc jupiter.challenges.picoctf.org 29221)
+2. I basically had to pull up different converters and be able to quickly recognize what type of data encoding I am presented with to put it into the right converter. I timed out the first time because I didn't recognize the octal set of numbers.
+3. I tried I second time and was able to do it fast enough. I got binary, octal, and hex encodings. After solving, I was given the flag to submit (picoCTF{learning_about_converting_values_00a975ff}).
+
+
+
+## Web Exploitation
+### GET aHEAD | 20 points
+
+Look through a given site's server requests info to find the flag. 
+
+1. Looked up what HEAD meant in server request. Used this site: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+2. Clicked on given link to site and used inspector to see what's going on. It uses GET and POST methods to change the site color.
+3. The hint says I have more than two options, which probably refers to there being the GET and POST methods to either turn the site red or blue. Based off of the challenge's title, I guessed the third option would be HEAD. Looked through the mozilla reference and noticed that these three requests give similar results but in different ways.
+4. Looked through Linux notes to see what command to use to check out the website locally. Found curl and decided to use it.
+5. Ran "curl <url>:, but it just output the HTML I already looked at manually.
+6. Found "curl --help" for shortened manual on curl. Ran it, found '-i' to include protocol response headers.
+7. Ran "curl -i <url>" but it didn't work. Just returned the HTML again.
+8. Looked up "command to get head info from website" and found "curl -I" here: https://shorturl.at/doAFX
+9. Ran "curl -I <url>". Found the answer (picoCTF{r3j3ct_th3_du4l1ty_775f2530}).
+
+
+### logon | 100 points
+
+Try to log onto a given site and exploit insecurities to find the flag. 
+
+1. Opened the link to the site. It's a login page. Used username 'Joe' and password 'blah'. Gave me message that Joe's password is super secure. Tried logging in with a random username and password, got in but wouldn't show the flag. 
+2. Opened inspector. Elements didn't have anything interesting in it, so I looked through the tools and storage had the most interesting info. Saw my two attempted sessions, and I also saw a name 'admin', so I knew that should be important. I didn't quite understand the name and the value stuff going on, but out of the dummy sessions, admin was the only one from the domain jupiter.challenges.picoctf.org.
+3. I tried logging in wither username 'admin' and password 'False', but it didn't let me in. I guess that's not how name and value worked.
+4. Clicked on admin's value of "False" and decided to change it to "True" to see if it would let me see the flag. Refreshed and it showed the flag (picoCTF{th3_c0nsp1r4cy_l1v3s_d1c24fef}).
+
+
+
+## Cryptography
+### Mod 26 | 10 points
+
+Convert an ROT13 cypher into text for the flag.
+
+1. Looked up what ROT13 is.
+2. Found a ROT13 decoder, entered cipher, submitted the converted text (picoCTF{next_time_I'll_try_2_rounds_of_rot13_wqWOSBKW}).
+
+
+### Easy1 | 100 points
+
+We're supposed to solve a one time pad, given a table and an encryption key. 
+
+1. Never heard of a one time pad and it shows. I downloaded the table, saw that there were the same amount of characters in the pad and key, and proceeded to use them like x and y coordinates to get my letters. When I submitted, it was wrong and I was devastated because I spent so much time matching the letters up.
+2. Thought perhaps there's a decoder for this stuff. Looked up "one time pad decoder" and used the first one. Pasted in my pad and key and was given a more readable answer than what I first came up with (CRYPTOISFUN)
+3. Submitted picoCTF{CRYPTOISFUN}
+
+
+
+## Reverse Engineering
+### Transformation | 20 points
+
+Reverse the content given in file 'enc' to get the flag. 
+
+1. Along with enc, some code that seems to explain the process needed to reverse enc is provided. The hint said to use an online decoder, which I am a fan of.
+2. Downloaded enc, copied content. Looked online for a decoder, found CyberChef (https://shorturl.at/aAEMX). Pasted content into input. Output was gibberish.
+3. Looked through Cyberchef's settings. Noticed "input character encoding" setting and set it to UTF-8. Still gibberish but more legible. Kept increasing UTF until I got to 16BE and it was legible in the classic picoCTF flag format (picoCTF{16_bits_inst34d_of_8_75d4898b}).
+
+
+### file-run 1 | 100 points
+1. "mkdir file-run1" , "cd file-run1", "wget <url>"
+2. Since url is for program 'run', used "chmod +x run" first
+3. Hint told me to try using ./ with the file, so I ran "./run" and got the answer (picoCTF{U51N6_Y0Ur_F1r57_F113_47cf2b7b}).
+
+
+
+## Forensics
+### Matryoshka doll | 30 points
+
+Find files within files until you find the flag.
+
+1. After reading hint, decided I need to use binwalk to solve problem. Used this site for reference: https://linuxcommandlibrary.com/man/binwalk
+2. "Mkdir matryoshka", "cd matryoshka", "wget <link>"
+3. Basically a cycle of extract files "binwalk -e [file]", check what files are available "ls [file]", go to a directory within the file "cd [file]", ls to see what's there and then repeat.
+4. Keep doing that until you get to the flag.txt file. "cat flag.txt" to see the flag (picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32})
+
+
+### Lookey here | 100 points
+
+Given a big set of text, find the flag. 
+
+1. Opened the file, used Ctrl+F "pico", found the flag (picoCTF{gr3p_15_@w3s0m3_4c479940})
+
+
+
+## Binary Exploitation
+### Stonks | 20 points
+
+Exploit buddy's API by finding what's wrong in his vuln file. 
+
+1. Running out of time, need to at least start most difficult challenge
+2. Looking through vuln file, buddy left comments that point out his program's weakness: no format conditions, and the program prints any input out.
+3. Would have to find flag by exploiting this. 
+
+
+## MOST DIFFICULT
+### Investigative Reversing 3 | 400 points
+
+Using a recovered binary and an image, we're supposed to find the flag somewhere.
+
+1. just mentioning I was running out of time.
+2. made directory to store my two files. ran "file [filename] to figure out whether they actually are the type they say they are.
+3. the image is actually an executable LSB file. used "chmod +x mystery" and "./mystery" but it told me that there is no flag and I need to run the code on a server.
+4. That's about as far as I got. 
